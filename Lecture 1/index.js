@@ -57,8 +57,6 @@ function pandovan(m, n)
         else
             return P2(m+3) - P2(m+1)
     }
-    
-    console.log(P2(-1))
 
     let result = []
 
