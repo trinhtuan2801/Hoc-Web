@@ -44,18 +44,31 @@ console.log(translatePigLatin("schwartz"))
 
 function pandovan(m, n)
 {
+    let P = 
+    {
+        0: 1,
+        1: 1,
+        2: 1,
+    }
+
     function P1(n)
     {
-        if (n == 0 || n == 1 || n == 2) return 1
-        else
-            return P1(n-2) + P1(n-3)
+        if (!P.hasOwnProperty(n))
+        {
+            P[n] = P1(n-2) + P1(n-3)
+        }
+
+        return P[n]
     }
 
     function P2(m)
     {
-        if (m == 0 || m == 1 || m == 2) return 1
-        else
-            return P2(m+3) - P2(m+1)
+        if (!P.hasOwnProperty(m))
+        {
+            P[m] = P2(m+3) - P2(m+1)
+        }
+
+        return P[m]
     }
 
     let result = []
