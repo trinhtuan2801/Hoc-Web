@@ -23,11 +23,9 @@ export class Box
     color = new Color(0, 0, 0, 0)
     box = document.createElement('div')
     isTarget = false
-    game
 
-    constructor(game)
+    constructor()
     {
-        this.game = game
         this.setUp()
     }
 
@@ -36,7 +34,11 @@ export class Box
         this.box.className = 'box'
         this.box.addEventListener('click', ()=>
         {
-            this.game.check(this.isTarget)
+            let event = new CustomEvent('check', 
+            {
+                detail: {result: this.isTarget} 
+            })
+            dispatchEvent(event)
         })
     }
 

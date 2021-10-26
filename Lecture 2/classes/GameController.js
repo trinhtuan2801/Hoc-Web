@@ -9,7 +9,7 @@ export class GameController
 
     constructor()
     {
-        this.timer = new Timer(7, 0.02, this)
+        this.timer = new Timer(3, 0.02)
         document.body.insertAdjacentElement('beforeend', this.timer.getHTML())
 
         this.boxcontainer = document.createElement('div')
@@ -21,6 +21,8 @@ export class GameController
            this.boxes[i] = new Box(this)
            this.boxcontainer.insertAdjacentElement('beforeend', this.boxes[i].getHTML())      
         }
+
+        addEventListener('check',(e) => {this.check(e.detail.result)})
     }
     
     generateLevel()
