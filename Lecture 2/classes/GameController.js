@@ -25,6 +25,7 @@ export class GameController
     
     generateLevel()
     {
+        this.resetTarget()
         let color = this.getRandomColor()
         this.timer.setColor(color)
         let bgcolor = new Color(color.r, color.g, color.b, 0.2)
@@ -40,6 +41,14 @@ export class GameController
 
         this.timer.reset()
         this.timer.start()
+    }
+
+    resetTarget()
+    {
+        for (let box of this.boxes)
+        {
+            box.isTarget = false
+        }
     }
 
     getRandomColor()
