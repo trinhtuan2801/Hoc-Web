@@ -6,15 +6,13 @@ class Timer
     time_step = 0
     progress_bar = document.createElement('div')
     bar = document.createElement('div')
-    game
 
-    constructor(maxtime, time_step, game)
+    constructor(maxtime, time_step)
     {
         this.setUp()
         this.maxtime = maxtime
         this.time_step = time_step
         this.time = maxtime
-        this.game = game
     }
 
     setUp()
@@ -41,7 +39,11 @@ class Timer
             if (this.time <= 0)
             {
                 this.stop()
-                this.game.check(false)
+                let event = new CustomEvent('check', 
+                {
+                    detail: {result: false} 
+                })
+                dispatchEvent(event)
             } 
         }, this.time_step*1000)
     }
